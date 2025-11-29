@@ -18,7 +18,6 @@ export default function TodoForm() {
   const queryClient = useQueryClient();
 
   const createTodo = useMutation({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mutationFn: async (newTodo: any) => {
       const response = await fetch('/api/todos', {
         method: 'POST',

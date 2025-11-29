@@ -11,7 +11,6 @@ export async function PATCH(
     const body = await request.json();
     const { title, description, isCompleted, priority, category, dueDate } = body;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const updateData: any = {};
     if (title !== undefined) updateData.title = title;
     if (description !== undefined) updateData.description = description;

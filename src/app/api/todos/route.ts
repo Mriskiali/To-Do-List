@@ -5,11 +5,10 @@ import { Priority } from '@prisma/client';
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const status = searchParams.get('status'); // 'all', 'active', 'completed'
-    const priority = searchParams.get('priority'); // 'LOW', 'MEDIUM', 'HIGH'
+    const status = searchParams.get('status');
+    const priority = searchParams.get('priority');
     const search = searchParams.get('search');
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const where: any = {};
 
     if (status === 'active') {

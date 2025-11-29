@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Status {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
 enum Priority {
   LOW
   MEDIUM
@@ -15,12 +21,14 @@ enum Priority {
 
 model Todo {
   id          String    @id @default(uuid())
+  userId      String    @db.VarChar(255)
   title       String
   description String?
-  isCompleted Boolean   @default(false)
+  status      Status    @default(TODO)
   priority    Priority
-  category    String
   dueDate     DateTime?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  
+  @@index([userId])
 }
